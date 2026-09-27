@@ -72,8 +72,8 @@ Each worked file carries YAML frontmatter (`id`, `title`, `ade_category`, `ade_s
 
 ## Authors
 
-- **Nikolas Bielski** — author & lead maintainer ([GitHub](https://github.com/NikolasBielski) · [LinkedIn](https://www.linkedin.com/in/nikbielski/))
-- **Daniel Koifman** — co-maintainer ([GitHub](https://github.com/Koifman) · [LinkedIn](https://www.linkedin.com/in/koifman-daniel/))
+- **Nikolas Bielski** — co-author & lead maintainer ([GitHub](https://github.com/NikolasBielski) · [LinkedIn](https://www.linkedin.com/in/nikbielski/))
+- **Daniel Koifman** — co-author & maintainer ([GitHub](https://github.com/Koifman) · [LinkedIn](https://www.linkedin.com/in/koifman-daniel/))
 
 ## License
 
