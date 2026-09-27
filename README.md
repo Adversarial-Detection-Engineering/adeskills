@@ -64,7 +64,7 @@ redamon/                            Redamon-packaged skill (ade_scoper) + README
 | Fix a vulnerable rule | [mitigations.md](Adversarial_Detection_Engineer/ade_framework/mitigations.md) (incl. per-platform sections) |
 | Platform-specific pitfalls | [bug_patterns/](Adversarial_Detection_Engineer/bug_patterns/) — [Elastic](Adversarial_Detection_Engineer/bug_patterns/elasticsecurity.md) · [Sentinel](Adversarial_Detection_Engineer/bug_patterns/microsoftsentinel.md) · [Sigma](Adversarial_Detection_Engineer/bug_patterns/sigma.md) |
 | Scope a purple-team engagement | [rulesets.md](Adversarial_Detection_Engineer/rulesets.md) · [redamon/ade_scoper.md](redamon/ade_scoper.md) |
-| Browse the raw findings catalog | [total_bugs.md](total_bugs.md) — 620 definite bypass findings across Elastic/Sentinel/Sigma |
+| Browse the raw findings catalog | [total_bugs.md](total_bugs.md) — 597 definite bypass findings across Elastic/Sentinel/Sigma |
 
 ## How a technique file is structured
 
