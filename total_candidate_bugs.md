@@ -1,8 +1,8 @@
-# Total Bugs — Definite Detection-Logic Bypass Findings
+# Total Candidate Bugs — Definite Detection-Logic Bypass Findings
 
-A machine-extracted catalog of **597 definite detection-rule bypass findings** mined from analysis of public detection rulesets (Elastic Security, Microsoft Sentinel, Sigma), mapped to the ADE taxonomy.
+A machine-extracted catalog of **597 candidate detection-rule bypass findings** mined from analysis of public detection rulesets (Elastic Security, Microsoft Sentinel, Sigma), mapped to the ADE taxonomy.
 
-> Scope: **only deterministic, attacker-executable bypasses** — high-confidence, material-risk (high/medium) findings an attacker can perform now with existing tools. Excluded: speculative "if the vendor changes X someday" fragility, version/signature/variant-drift staleness, and design-only issues. Findings are LLM-generated analysis of public vendor rules, for defensive detection engineering. Deduplicated by (rule, subcategory, bypass).
+> Scope: **only deterministic, attacker-executable bypasses** — high-confidence, material-risk (high/medium) findings an attacker can perform now with existing tools.
 
 **By platform:** Elastic 282 · Sentinel 312 · Sigma 3 · **Total 597**
 
