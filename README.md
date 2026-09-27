@@ -64,11 +64,11 @@ redamon/                            Redamon-packaged skill (ade_scoper) + README
 | Fix a vulnerable rule | [mitigations.md](Adversarial_Detection_Engineer/ade_framework/mitigations.md) (incl. per-platform sections) |
 | Platform-specific pitfalls | [bug_patterns/](Adversarial_Detection_Engineer/bug_patterns/) — [Elastic](Adversarial_Detection_Engineer/bug_patterns/elasticsecurity.md) · [Sentinel](Adversarial_Detection_Engineer/bug_patterns/microsoftsentinel.md) · [Sigma](Adversarial_Detection_Engineer/bug_patterns/sigma.md) |
 | Scope a purple-team engagement | [rulesets.md](Adversarial_Detection_Engineer/rulesets.md) · [redamon/ade_scoper.md](redamon/ade_scoper.md) |
-| Browse the raw findings catalog | [total_candidate_bugs.md](total_candidate_bugs.md) — 597 candidate bypass findings across Elastic/Sentinel/Sigma |
+| Browse the raw findings catalog | [total_candidate_bugs.md](total_candidate_bugs.md) — 593 candidate bypass findings across Elastic/Sentinel/Sigma |
 
 ## How a technique file is structured
 
-Each worked file carries YAML frontmatter (`id`, `title`, `ade_category`, `ade_subcategory`, named `mitre_attack` tags, `platform`, `testable`) and a consistent body: **Summary → ADE Classification → The Technique → Vulnerable Rule → Hardened Rule → Detection Layers → Implementation Nuances → References**. Many are grounded in specific real findings, with a *Documented instances* table naming the affected vendor rules.
+Each worked file carries YAML frontmatter (`id`, `title`, `ade_category`, `ade_subcategory`, named `mitre_attack` tags, `platform`, `testable`) and a common body structure: **Summary → ADE Classification → The Technique → Vulnerable Rule → Hardened Rule → Detection Layers → Implementation Nuances → References**. Summary, ADE Classification, Detection Layers, and Implementation Nuances appear in every file; the remaining sections are typical but not universal. Several files are grounded in specific real findings, carrying a *Documented instances* table naming the affected vendor rules.
 
 ## Authors
 
