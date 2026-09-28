@@ -14,6 +14,7 @@ ADE3 bugs often don't require the attacker to know the detection rule exists —
 - **Reconnaissance before attacking** naturally poisons aggregations
 - **Operational security** naturally involves timing spacing
 - **Piped commands** are standard shell usage — fragmentation is *unintentional* evasion
+- **Data volume grows on its own** — limit saturation degrades a rule with no attacker involvement at all
 
 ## Subcategories
 
@@ -31,6 +32,9 @@ Logic uses **multi-substring matching** (`contains|all`, multiple ANDs) assuming
 
 ### ADE3-05: Lineage Spoofing
 Logic relies on the **parent-process relationship** (e.g., "PowerShell spawned by Word = suspicious") while assuming the logged parent is truthful. Using a legitimate API (`PROC_THREAD_ATTRIBUTE_PARENT_PROCESS`), the attacker sets an arbitrary parent, so the event still fires but the `ParentImage`/`ParentProcessId` the rule trusts is poisoned. Like ADE3-01/02, the telemetry exists — a contextual field has been falsified.
+
+### ADE3-06: Limit Saturation
+Logic routes part of its evaluation through an operator with a **bounded working set** — a join or subsearch, a group table, a sort — while assuming every in-scope record is evaluated. Past the limit (Splunk `join` 50,000 rows; LogScale `groupBy()` 20,000 groups, `join()` 100,000 rows) the engine truncates without an error, and the record the rule needed may be dropped. Volume growth alone triggers it; see the [ADE3-06 README](ADE3-06-limit-saturation/).
 
 > **Out of scope — telemetry suppression.** Techniques that *remove* telemetry entirely (ETW/AMSI patching, provider unregistration, disabling logging) are **not** ADE bugs. ADE presupposes the event reaches the SIEM and asks why the rule didn't match; suppression is an upstream collection-integrity attack (MITRE T1562, Impair Defenses) — a precondition for the ADE categories, not an instance of one. Detecting suppression itself is a telemetry-integrity concern (see Detection Strategy below).
 
@@ -70,6 +74,12 @@ Grouped by subcategory — see each subcategory's README for its definition and 
 | [Correlation Window Evasion](ADE3-03-timing-and-scheduling/window-evasion.md) | Space actions outside a fixed queryPeriod/rate window (slow-and-low) | Logic analysis | Sentinel brute-force + Elastic Outlook COM (DLE-2026-00009) |
 | [Maxspan Delay, Boundary Straddling, and Beacon Jitter](ADE3-03-timing-and-scheduling/maxspan-delay-and-beacon-jitter.md) | Sleep past a sequence maxspan, straddle a date_trunc bucket edge, or jitter a beacon | Logic analysis | Elastic LoLBin/OpenAI/beaconing findings |
 
+### [ADE3-06 Limit Saturation](ADE3-06-limit-saturation/)
+
+| Technique | Mechanism | Testable | From |
+|-----------|-----------|----------|------|
+| [Join, Subsearch, and Group-Limit Saturation](ADE3-06-limit-saturation/join-and-group-limit-saturation.md) | Volume past a join/subsearch row cap or a groupBy group limit truncates the needed record | Logic analysis | Splunk ESCU + CrowdStrike LogScale community findings |
+
 ## Detection Strategy
 
 1. **Multi-event correlation** — file-create + process-create within a time window, same user
@@ -85,6 +95,7 @@ Grouped by subcategory — see each subcategory's README for its definition and 
 - **Aggregation Hijacking:** Can the attacker see current baselines/thresholds? Could benign preparatory activity poison the aggregation?
 - **Timing:** Hard-coded time windows (`maxspan`, lookback)? Could an attacker simply wait them out?
 - **Event Fragmentation:** Multi-substring (`contains|all`) against command-line fields that shell operators could split?
+- **Limit Saturation:** A `join`, subsearch, high-cardinality `groupBy`, or `sort` whose bounded side is filtered only by event type? Could that side exceed the engine's default in your largest environment? Does a rarity filter run *after* a top-N group limit?
 
 ## Related Categories
 
