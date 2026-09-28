@@ -8,7 +8,7 @@ It packages the ADE taxonomy as worked technique files, platform-specific bug-pa
 
 ## The ADE taxonomy
 
-Four categories of detection-logic bug, 15 subcategories, 37 worked technique files:
+Four categories of detection-logic bug, 16 subcategories, 38 worked technique files:
 
 ```
 ADE1 — Reformatting in Actions        (the logged input is reshaped so a string match fails)
@@ -27,6 +27,7 @@ ADE3 — Context Development            (surrounding context is shaped, not the 
   ADE3-03 Timing and Scheduling
   ADE3-04 Event Fragmentation
   ADE3-05 Lineage Spoofing
+  ADE3-06 Limit Saturation
 
 ADE4 — Logic Manipulation             (Boolean / filter / field logic is inverted or wrong)
   ADE4-01 Gate Inversion
