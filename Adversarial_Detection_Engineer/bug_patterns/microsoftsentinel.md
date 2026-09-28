@@ -46,7 +46,7 @@ Sentinel's Advanced SIEM Information Model (ASIM) parsers (`imAuthentication`, `
 
 ## 7. KQL matching quirks
 
-- **Case sensitivity:** `==`, `has`, `contains` are **case-sensitive** by default; use `=~`, `has_cs`/`contains_cs` deliberately. `AdFind.exe` vs `adfind.exe` silently diverge.
+- **Case sensitivity:** `==` is **case-sensitive** by default; use `=~`, deliberately. `AdFind.exe` vs `adfind.exe` silently diverge.
 - **`has` vs `contains`:** `has` is token-based (whole-term, indexed, faster); `contains` is substring. A `has` rule misses a substring embedded in a larger token; a `contains` rule over-matches. Choose intentionally.
 - **`matches regex`** uses RE2 (no backreferences, no lookbehind/lookahead) — patterns ported from PCRE may not compile or behave the same.
 - **`in` vs `in~`:** `in` is case-sensitive set membership; enumerated LOLBin/extension lists silently miss case variants without `in~`.
