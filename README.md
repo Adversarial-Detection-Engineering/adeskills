@@ -1,5 +1,7 @@
 # ADE Skills — Adversarial Detection Engineering Knowledge Base
 
+[https://adeframework.org](https://adeframework.org)
+
 A working knowledge base for **Adversarial Detection Engineering (ADE)**: reasoning about the **false negatives** in SIEM/EDR/XDR detection rules — the mismatches between what a rule *intends* to catch and what it *actually* catches — before a threat actor abuses them.
 
 It packages the ADE taxonomy as worked technique files, platform-specific bug-pattern references, pre-engagement scoping tooling, and a Redamon skill, all grounded in analysis of real public detection rulesets (Sigma, Elastic Security, Microsoft Sentinel).
